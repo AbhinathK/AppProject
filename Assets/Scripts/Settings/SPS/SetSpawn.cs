@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 using HoloToolkit.Unity;
 
-public class SettingsBehaviour : MonoBehaviour
+public class SetSpawn : MonoBehaviour
 {
 
 
@@ -18,6 +18,6 @@ public class SettingsBehaviour : MonoBehaviour
 
     public void OnSelect()
     {
-        Application.LoadLevel("Settings");
+        Application.LoadLevel("SetPlatformSpawn");
     }
 }
