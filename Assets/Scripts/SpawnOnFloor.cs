@@ -45,9 +45,7 @@ public class SpawnOnFloor : MonoBehaviour
     {
         // If the sphere has no Rigidbody component, add one to enable physics.
         //SurfaceMeshesToPlanes reftemp = new SurfaceMeshesToPlanes
-        float x = Camera.main.gameObject.transform.position.x;
-        float currentfloor = SurfaceMeshesToPlanes.Instance.FloorYPosition;
-        transform.position = new Vector3(0.5f, currentfloor, 0.5f);
+        
     }
 
     // Called by SpeechManager when the user says the "Reset world" command
@@ -66,5 +64,8 @@ public class SpawnOnFloor : MonoBehaviour
     void StartGame(object source, EventArgs args)
     {
         planesDone = true;
+        float x = Camera.main.gameObject.transform.position.x;
+        float currentfloor = SurfaceMeshesToPlanes.Instance.FloorYPosition;
+        transform.position = new Vector3(0.5f, currentfloor, 0.5f);
     }
 }
