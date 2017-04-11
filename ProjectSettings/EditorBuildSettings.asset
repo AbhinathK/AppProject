@@ -13,3 +13,11 @@ EditorBuildSettings:
     path: Assets/MorrisWaterMaze.unity
   - enabled: 1
     path: Assets/Settings.unity
+  - enabled: 1
+    path: Assets/SetPlatformSpawn.unity
+  - enabled: 1
+    path: Assets/SetPlatformSpawn2.unity
+  - enabled: 1
+    path: Assets/SetPlatformSpawn3.unity
+  - enabled: 1
+    path: Assets/SetDelayTime.unity
