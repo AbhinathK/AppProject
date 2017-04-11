@@ -19,7 +19,7 @@ public class SpawnOnFloor : MonoBehaviour
         planesDone = false;
         // Grab the original local position of the sphere when the app starts.
         originalPosition = this.transform.localPosition;
-        this.GetComponent<Renderer>().material.color = Color.red;
+        this.GetComponent<Renderer>().material.color = Color.clear;
         platformColl = GetComponent<Collider>();
         SurfaceMeshesToPlanes.Instance.MakePlanesComplete += StartGame;
     }
