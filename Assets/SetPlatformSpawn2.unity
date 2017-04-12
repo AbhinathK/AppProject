@@ -724,6 +724,7 @@ GameObject:
   - component: {fileID: 720994735}
   - component: {fileID: 720994733}
   - component: {fileID: 720994732}
+  - component: {fileID: 720994734}
   m_Layer: 5
   m_Name: Input2
   m_TagString: Untagged
@@ -784,6 +785,17 @@ MonoBehaviour:
   m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
   m_DragThreshold: 5
+--- !u!114 &720994734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 720994730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08f47ef731c2d0141b7deb95291fcf41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!65 &720994735
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -895,6 +907,7 @@ GameObject:
   - component: {fileID: 732168020}
   - component: {fileID: 732168018}
   - component: {fileID: 732168017}
+  - component: {fileID: 732168019}
   m_Layer: 5
   m_Name: Input3
   m_TagString: Untagged
@@ -955,6 +968,17 @@ MonoBehaviour:
   m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
   m_DragThreshold: 5
+--- !u!114 &732168019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 732168015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4bb66d958689da42ad0bcfbc2ed8848, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!65 &732168020
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1096,6 +1120,7 @@ GameObject:
   - component: {fileID: 848028741}
   - component: {fileID: 848028739}
   - component: {fileID: 848028738}
+  - component: {fileID: 848028740}
   m_Layer: 5
   m_Name: Input1
   m_TagString: Untagged
@@ -1156,6 +1181,17 @@ MonoBehaviour:
   m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
   m_DragThreshold: 5
+--- !u!114 &848028740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 848028736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d3887e900c3376439c2ce68524c60cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!65 &848028741
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1589,6 +1625,7 @@ GameObject:
   - component: {fileID: 1658057475}
   - component: {fileID: 1658057473}
   - component: {fileID: 1658057472}
+  - component: {fileID: 1658057474}
   m_Layer: 5
   m_Name: Input4
   m_TagString: Untagged
@@ -1649,6 +1686,17 @@ MonoBehaviour:
   m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
   m_DragThreshold: 5
+--- !u!114 &1658057474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1658057470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36137bb3c895bab4dad02235df82a55b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!65 &1658057475
 BoxCollider:
   m_ObjectHideFlags: 0
