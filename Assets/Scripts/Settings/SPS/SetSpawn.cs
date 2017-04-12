@@ -9,7 +9,8 @@ public class SetSpawn : MonoBehaviour
     public static Boolean platformIsSet { get; private set; }
     public static Boolean circleIsSet { get; private set; }
     public static Boolean lineIsSet { get; private set; }
-    public static float platformPos { get; private set; }
+    public static float platformPos1 { get; private set; }
+    public static float platformPos2 { get; private set; }
 
     public static SetSpawn Instance { get; private set; }
 
@@ -46,14 +47,14 @@ public class SetSpawn : MonoBehaviour
 
     public void SetCircle(float x)
     {
-        platformPos = x;
+        platformPos1 = x;
         circleIsSet = true;
 
     }
 
     public void SetLine(float x)
     {
-        platformPos = platformPos + x;
+        platformPos2 = platformPos1 + x;
         lineIsSet = true;
 
     }
