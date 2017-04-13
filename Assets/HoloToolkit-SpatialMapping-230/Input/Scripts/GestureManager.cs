@@ -84,8 +84,11 @@ namespace Academy.HoloToolkit.Unity
 
         void OnDestroy()
         {
-            gestureRecognizer.StopCapturingGestures();
-            gestureRecognizer.TappedEvent -= GestureRecognizer_TappedEvent;
+            if (gestureRecognizer != null)
+            {
+                gestureRecognizer.StopCapturingGestures();
+                gestureRecognizer.TappedEvent -= GestureRecognizer_TappedEvent;
+            }
         }
     }
 }
