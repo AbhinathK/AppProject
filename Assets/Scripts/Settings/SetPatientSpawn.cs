@@ -6,27 +6,6 @@ using UnityEngine.UI;
 
 public class SetPatientSpawn : MonoBehaviour {
 
-    public static Boolean spawnIsSet { get; private set; }
-    public static Vector3 currentLoc { get; private set; }
-
-    public static SetPatientSpawn Instance { get; private set; }
-
-    
-
-    // Use this for initialization
-    void Start () {
-
-        if(Instance != null && Instance != this)
-        {
-            Destroy(gameObject);
-        }
-
-        Instance = this;
-        spawnIsSet = false;
-
-        DontDestroyOnLoad(gameObject);
-		
-	}
 
     public void OnGazeEnter()
     {
@@ -38,9 +17,13 @@ public class SetPatientSpawn : MonoBehaviour {
         GetComponent<Button>().OnPointerExit(null);
     }
 
+    private void Update()
+    {
+        this.GetComponentInChildren<Text>().text = (GlobalPositionTracker.globalPosOffset + Camera.main.transform.position).x.ToString();
+    }
     void OnSelect()
     {
-        currentLoc = Camera.main.gameObject.transform.position;
-        spawnIsSet = true;
+        PatientSpawnSingleton.Instance.SetLoc(GlobalPositionTracker.globalPosOffset + Camera.main.transform.position);
+        
     }
 }

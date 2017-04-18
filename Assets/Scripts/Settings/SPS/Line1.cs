@@ -18,6 +18,6 @@ public class Line1 : MonoBehaviour
 
     public void OnSelect()
     {
-        SetSpawn.Instance.SetLine(0.1F);
+        SetEndSingleton.Instance.SetLine(0.1F);
     }
 }

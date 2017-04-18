@@ -17,6 +17,6 @@ public class Circle1 : MonoBehaviour {
 
     public void OnSelect()
     {
-        SetSpawn.Instance.SetCircle(1F);
+        SetEndSingleton.Instance.SetCircle(1F);
     }
 }

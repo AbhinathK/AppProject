@@ -18,6 +18,7 @@ public class PatientBehaviour : MonoBehaviour
 
     public void OnSelect()
     {
+        GlobalPositionTracker.Instance.UpdatePos(Camera.main.transform.position);
         Application.LoadLevel("MainMenu");
     }
 }

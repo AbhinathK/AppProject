@@ -18,6 +18,6 @@ public class DelayTimeNone : MonoBehaviour
 
     public void OnSelect()
     {
-        DelayTime.Instance.SetDelay(0F);
+        DelayTimeSingleton.Instance.SetDelay(0F);
     }
 }

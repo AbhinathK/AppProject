@@ -553,6 +553,7 @@ GameObject:
   - component: {fileID: 1739458670}
   - component: {fileID: 1739458672}
   - component: {fileID: 1739458671}
+  - component: {fileID: 1739458673}
   m_Layer: 0
   m_Name: DoctorButton
   m_TagString: Untagged
@@ -709,6 +710,17 @@ MonoBehaviour:
   m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
   m_DragThreshold: 5
+--- !u!114 &1739458673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1739458665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 914da4213a5d92f499942b7614e4b857, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1901774040
 GameObject:
   m_ObjectHideFlags: 0
@@ -838,6 +850,7 @@ GameObject:
   - component: {fileID: 1987693705}
   - component: {fileID: 1987693707}
   - component: {fileID: 1987693706}
+  - component: {fileID: 1987693708}
   m_Layer: 0
   m_Name: PatientButton
   m_TagString: Untagged
@@ -994,6 +1007,17 @@ MonoBehaviour:
   m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
   m_DragThreshold: 5
+--- !u!114 &1987693708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1987693700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 914da4213a5d92f499942b7614e4b857, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2046808127
 GameObject:
   m_ObjectHideFlags: 0
@@ -1080,6 +1104,11 @@ GameObject:
   - component: {fileID: 2089084009}
   - component: {fileID: 2089084008}
   - component: {fileID: 2089084007}
+  - component: {fileID: 2089084012}
+  - component: {fileID: 2089084013}
+  - component: {fileID: 2089084016}
+  - component: {fileID: 2089084015}
+  - component: {fileID: 2089084014}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1155,6 +1184,61 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2089084012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2089084006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac6d7ddec87a73641822055fee4d7513, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2089084013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2089084006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c57efc0f8e95bcb4e92bd1cec6c205cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2089084014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2089084006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 492b1760147b259409fb3a2be734be5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2089084015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2089084006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 547d26ebb93107a449a1246e03d21d8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2089084016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2089084006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a56d03ba8fe7ab644b750b508dcde336, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2135386766
 GameObject:
   m_ObjectHideFlags: 0

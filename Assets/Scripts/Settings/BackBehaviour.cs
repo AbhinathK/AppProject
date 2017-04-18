@@ -18,6 +18,7 @@ public class BackBehaviour : MonoBehaviour
 
     public void OnSelect()
     {
+        GlobalPositionTracker.Instance.UpdatePos(Camera.main.transform.position);
         Application.LoadLevel("MainMenu");
     }
 }

@@ -18,6 +18,6 @@ public class Circle2 : MonoBehaviour
 
     public void OnSelect()
     {
-        SetSpawn.Instance.SetCircle(2F);
+        SetEndSingleton.Instance.SetCircle(2F);
     }
 }

@@ -18,6 +18,11 @@ public class NextSecondDigit : MonoBehaviour
 
     public void OnSelect()
     {
-        Application.LoadLevel("SetPlatformSpawn3");
+        if (SetEndSingleton.circleIsSet == true)
+        {
+
+            GlobalPositionTracker.Instance.UpdatePos(Camera.main.transform.position);
+            Application.LoadLevel("SetPlatformSpawn3");
+        }
     }
 }

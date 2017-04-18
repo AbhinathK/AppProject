@@ -18,6 +18,6 @@ public class DelayTime5 : MonoBehaviour
 
     public void OnSelect()
     {
-        DelayTime.Instance.SetDelay(5F);
+        DelayTimeSingleton.Instance.SetDelay(5F);
     }
 }

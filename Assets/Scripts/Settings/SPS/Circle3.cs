@@ -18,6 +18,6 @@ public class Circle3 : MonoBehaviour
 
     public void OnSelect()
     {
-        SetSpawn.Instance.SetCircle(3F);
+        SetEndSingleton.Instance.SetCircle(3F);
     }
 }

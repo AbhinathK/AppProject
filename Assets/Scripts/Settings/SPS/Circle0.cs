@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using HoloToolkit.Unity;
 
 public class Circle0 : MonoBehaviour
 {
@@ -18,6 +19,6 @@ public class Circle0 : MonoBehaviour
 
     public void OnSelect()
     {
-        SetSpawn.Instance.SetCircle(0F);
+        SetEndSingleton.Instance.SetCircle(0F);
     }
 }

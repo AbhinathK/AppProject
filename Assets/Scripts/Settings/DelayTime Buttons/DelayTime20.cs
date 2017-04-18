@@ -18,6 +18,6 @@ public class DelayTime20 : MonoBehaviour
 
     public void OnSelect()
     {
-        DelayTime.Instance.SetDelay(20F);
+        DelayTimeSingleton.Instance.SetDelay(20F);
     }
 }

@@ -13,29 +13,42 @@ public class SpawnOnFloor : MonoBehaviour
     Vector3 originalPosition;
     public Collider platformColl;
     private Boolean planesDone;
+    private Boolean EndingCalled;
+    
+   
     // Use this for initialization
     void Start()
     {
-        planesDone = false;
-        // Grab the original local position of the sphere when the app starts.
-        originalPosition = this.transform.localPosition;
-        this.GetComponent<Renderer>().material.color = Color.clear;
-        platformColl = GetComponent<Collider>();
+        
+        this.GetComponent<Renderer>().material.color = Color.white;
+        //platformColl = GetComponent<Collider>();
         SurfaceMeshesToPlanes.Instance.MakePlanesComplete += StartGame;
+        EndingCalled = false;
+        
     }
-    private void Update()
+    void Update()
     {
         var headPosition = Camera.main.transform.position;
         RaycastHit onObject;
         if (Physics.Raycast(headPosition, Vector3.down, out onObject)){
-            
-            if(onObject.collider.gameObject == this.gameObject)
+            if ((RunningManager.Instance.p1Start == true && RunningManager.Instance.p1End == false) || (RunningManager.Instance.p3Start == true && RunningManager.Instance.p3End == false))
             {
-                this.GetComponent<Renderer>().material.color = Color.green;
-            }
-            else if(planesDone == true)
+                if (onObject.collider.gameObject == this.gameObject)
+                {
+                    this.GetComponent<Renderer>().material.color = Color.green;
+                    if (EndingCalled == false)
+                    {
+                        EndingCalled = true;
+                        Invoke("IsStanding", 3F);
+                    }
+                }
+                else if (planesDone == true)
+                {
+                    this.GetComponent<Renderer>().material.color = Color.blue;
+                }
+            }else if (RunningManager.Instance.pause == true)
             {
-                this.GetComponent<Renderer>().material.color = Color.blue;
+                this.GetComponent<Renderer>().material.color = Color.clear;
             }
         }
         
@@ -43,29 +56,49 @@ public class SpawnOnFloor : MonoBehaviour
     // Called by GazeGestureManager when the user performs a Select gesture
     void OnSelect()
     {
-        // If the sphere has no Rigidbody component, add one to enable physics.
-        //SurfaceMeshesToPlanes reftemp = new SurfaceMeshesToPlanes
+        
         
     }
 
-    // Called by SpeechManager when the user says the "Reset world" command
+   
     void OnReset()
     {
-        // If the sphere has a Rigidbody component, remove it to disable physics.
+        
         this.transform.localPosition = originalPosition;
     }
 
-    // Called by SpeechManager when the user says the "Drop sphere" command
-    void OnDrop()
-    {
-        // Just do the same logic as a Select gesture.
-        OnSelect();
-    }
-    void StartGame(object source, EventArgs args)
+    
+    
+    public void StartGame(object Object, EventArgs e)
     {
         planesDone = true;
-        float x = Camera.main.gameObject.transform.position.x;
         float currentfloor = SurfaceMeshesToPlanes.Instance.FloorYPosition;
-        transform.position = new Vector3(0.5f, currentfloor, 0.5f);
+        Vector3 spawnin =  new Vector3(CalcRealtiveFloorPos().x, currentfloor, CalcRealtiveFloorPos().z);
+        this.transform.position = spawnin;
+    }
+
+    public Vector3 CalcRealtiveFloorPos()
+    {
+        Vector3 temp = PatientSpawnSingleton.currentLoc - GlobalPositionTracker.globalPosOffset;
+        float circle = SetEndSingleton.platformPos1;
+        float line = SetEndSingleton.platformPos2*10;
+        //float circle = 2;
+        //float line = 3;
+        Vector3 PlatformXZ = new Vector3(temp.x + ((float)(circle*Math.Sin(2 * Math.PI * (line/12)))), 0F, temp.z + ((float)(circle*Math.Cos(2 * Math.PI * (line / 12)))));
+        return PlatformXZ;
+    }
+
+    public void IsStanding()
+    {
+        var headPosition = Camera.main.transform.position;
+        RaycastHit onObject;
+        if (Physics.Raycast(headPosition, Vector3.down, out onObject))
+        {
+            if (onObject.collider.gameObject == this.gameObject)
+            {
+                RunningManager.Instance.EndPhase();
+            }
+        }
+        EndingCalled = false;
     }
 }
