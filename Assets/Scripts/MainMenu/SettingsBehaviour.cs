@@ -23,6 +23,7 @@ public class SettingsBehaviour : MonoBehaviour
     public void OnSelect()
     {
         GlobalPositionTracker.Instance.UpdatePos(Camera.main.transform.position);
+        GlobalPositionTracker.Instance.UpdateRotation(Camera.main.transform.rotation);
         Application.LoadLevel("Settings");
     }
 }   
