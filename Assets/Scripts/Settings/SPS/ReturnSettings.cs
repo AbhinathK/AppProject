@@ -18,7 +18,11 @@ public class ReturnSettings : MonoBehaviour
 
     public void OnSelect()
     {
-        GlobalPositionTracker.Instance.UpdatePos(Camera.main.transform.position);
-        Application.LoadLevel("Settings");
+        if (SetEndSingleton.lineIsSet == true)
+        {
+            GlobalPositionTracker.Instance.UpdateRotation(Camera.main.transform.rotation);
+            GlobalPositionTracker.Instance.UpdatePos(Camera.main.transform.position);
+            Application.LoadLevel("Settings");
+        }
     }
 }

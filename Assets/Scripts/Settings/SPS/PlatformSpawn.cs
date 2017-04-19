@@ -18,6 +18,7 @@ public class PlatformSpawn : MonoBehaviour
 
     public void OnSelect()
     {
+        GlobalPositionTracker.Instance.UpdateRotation(Camera.main.transform.rotation);
         GlobalPositionTracker.Instance.UpdatePos(Camera.main.transform.position);
         Application.LoadLevel("SetPlatformSpawn2");
     }

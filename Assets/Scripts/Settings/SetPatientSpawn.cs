@@ -19,11 +19,11 @@ public class SetPatientSpawn : MonoBehaviour {
 
     private void Update()
     {
-        this.GetComponentInChildren<Text>().text = (GlobalPositionTracker.globalPosOffset + Camera.main.transform.position).x.ToString();
+        this.GetComponentInChildren<Text>().text = (Camera.main.transform.position).x.ToString();
     }
     void OnSelect()
     {
-        PatientSpawnSingleton.Instance.SetLoc(GlobalPositionTracker.globalPosOffset + Camera.main.transform.position);
+        PatientSpawnSingleton.Instance.SetLoc(Camera.main.transform.position);
         
     }
 }

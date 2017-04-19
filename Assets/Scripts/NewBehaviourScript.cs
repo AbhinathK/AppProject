@@ -11,7 +11,7 @@ public class NewBehaviourScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        this.GetComponent<TextMesh>().text = SetEndSingleton.Instance.getPlat1().ToString() + "," + SetEndSingleton.Instance.getPlat2().ToString() + "," + GlobalPositionTracker.globalPosOffset.x.ToString();
+        this.GetComponent<TextMesh>().text = SetEndSingleton.Instance.getPlat1().ToString() + "," + SetEndSingleton.Instance.getPlat2().ToString() + "," + (Camera.main.transform.position).x.ToString();
 
     }
 }

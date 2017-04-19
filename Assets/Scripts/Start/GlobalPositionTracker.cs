@@ -30,7 +30,7 @@ public class GlobalPositionTracker : MonoBehaviour {
 
     public void UpdatePos(Vector3 pos)
     {
-        globalPosOffset = globalPosOffset + pos;
+        globalPosOffset = pos;
     }
 
     public void UpdateRotation(Quaternion rotation) {

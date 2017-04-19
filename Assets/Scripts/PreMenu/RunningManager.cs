@@ -65,7 +65,7 @@ public class RunningManager : MonoBehaviour {
             p1End = true;
             pause = true;
             Invoke("StartNextPhase",DelayTimeSingleton.delayTime);
-        } else if (RunningManager.Instance.p3Start == true && RunningManager.Instance.p3Start == false)
+        } else if (RunningManager.Instance.p3Start == true && RunningManager.Instance.p3End == false)
         {
             EndTrial();
         }
@@ -79,6 +79,7 @@ public class RunningManager : MonoBehaviour {
     
     public void EndTrial()
     {
+        GlobalPositionTracker.Instance.UpdateRotation(Camera.main.transform.rotation);
         GlobalPositionTracker.Instance.UpdatePos(Camera.main.transform.position);
         Application.LoadLevel("MainMenu");
     }

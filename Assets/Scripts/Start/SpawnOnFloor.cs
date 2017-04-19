@@ -19,8 +19,8 @@ public class SpawnOnFloor : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        
-        this.GetComponent<Renderer>().material.color = Color.white;
+
+        this.GetComponent<Renderer>().enabled = false;
         //platformColl = GetComponent<Collider>();
         SurfaceMeshesToPlanes.Instance.MakePlanesComplete += StartGame;
         EndingCalled = false;
@@ -35,20 +35,22 @@ public class SpawnOnFloor : MonoBehaviour
             {
                 if (onObject.collider.gameObject == this.gameObject)
                 {
+                    this.GetComponent<Renderer>().enabled = true;
                     this.GetComponent<Renderer>().material.color = Color.green;
-                    if (EndingCalled == false)
-                    {
+                    
+                    if(EndingCalled == false){
                         EndingCalled = true;
                         Invoke("IsStanding", 3F);
                     }
                 }
                 else if (planesDone == true)
                 {
+                    this.GetComponent<Renderer>().enabled = true;
                     this.GetComponent<Renderer>().material.color = Color.blue;
                 }
             }else if (RunningManager.Instance.pause == true)
             {
-                this.GetComponent<Renderer>().material.color = Color.clear;
+                this.GetComponent<Renderer>().enabled = false;
             }
         }
         
@@ -79,11 +81,11 @@ public class SpawnOnFloor : MonoBehaviour
 
     public Vector3 CalcRealtiveFloorPos()
     {
-        Vector3 temp = PatientSpawnSingleton.currentLoc - GlobalPositionTracker.globalPosOffset;
-        float circle = SetEndSingleton.platformPos1;
-        float line = SetEndSingleton.platformPos2*10;
-        //float circle = 2;
-        //float line = 3;
+        Vector3 temp = PatientSpawnSingleton.currentLoc;
+        float x = 5;
+        float circle = x-SetEndSingleton.platformPos1-1;
+        float line = SetEndSingleton.platformPos2;
+        
         Vector3 PlatformXZ = new Vector3(temp.x + ((float)(circle*Math.Sin(2 * Math.PI * (line/12)))), 0F, temp.z + ((float)(circle*Math.Cos(2 * Math.PI * (line / 12)))));
         return PlatformXZ;
     }

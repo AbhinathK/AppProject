@@ -20,8 +20,8 @@ public class PlaceStartPlatform : MonoBehaviour
 	void Start () {
 
         
-        startPos = PatientSpawnSingleton.currentLoc - GlobalPositionTracker.globalPosOffset;
-        this.GetComponent<Renderer>().material.color = Color.black;
+        startPos = PatientSpawnSingleton.currentLoc;
+        this.GetComponent<Renderer>().enabled = false;
         SurfaceMeshesToPlanes.Instance.MakePlanesComplete += StartPlatformSpawn;
         
     }
@@ -40,9 +40,13 @@ public class PlaceStartPlatform : MonoBehaviour
                 if(RunningManager.Instance.p1Start == false)
                 {
                     RunningManager.Instance.StartP1();
-                }else if(RunningManager.Instance.p3Start == false && RunningManager.Instance.p1End == true)
+                    this.GetComponent<Renderer>().enabled = false;
+
+                }
+                else if(RunningManager.Instance.p3Start == false && RunningManager.Instance.p1End == true)
                 {
                     RunningManager.Instance.StartP3();
+                    this.GetComponent<Renderer>().enabled = false;
                 }
             }
             else
@@ -51,11 +55,19 @@ public class PlaceStartPlatform : MonoBehaviour
             }
 
         }
+        if(RunningManager.Instance.pause == true)
+        {
+            this.GetComponent<Renderer>().enabled = false;
+        }else if(RunningManager.Instance.pause == false && RunningManager.Instance.p3Start == false && RunningManager.Instance.p1End == true)
+        {
+            this.GetComponent<Renderer>().enabled = true;
+        }
     }
     public void StartPlatformSpawn(object Object, EventArgs e)
     {
         float currentfloor = SurfaceMeshesToPlanes.Instance.FloorYPosition;
         this.transform.position = new Vector3(startPos.x, currentfloor, startPos.z);
+        this.GetComponent<Renderer>().enabled = true;
         this.GetComponent<Renderer>().material.color = Color.yellow;
     }
 }

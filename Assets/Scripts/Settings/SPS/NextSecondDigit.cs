@@ -20,7 +20,7 @@ public class NextSecondDigit : MonoBehaviour
     {
         if (SetEndSingleton.circleIsSet == true)
         {
-
+            GlobalPositionTracker.Instance.UpdateRotation(Camera.main.transform.rotation);
             GlobalPositionTracker.Instance.UpdatePos(Camera.main.transform.position);
             Application.LoadLevel("SetPlatformSpawn3");
         }

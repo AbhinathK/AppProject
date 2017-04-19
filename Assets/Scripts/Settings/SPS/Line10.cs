@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Line4 : MonoBehaviour
+public class Line10 : MonoBehaviour
 {
 
     public void OnGazeEnter()
@@ -18,6 +18,6 @@ public class Line4 : MonoBehaviour
 
     public void OnSelect()
     {
-        SetEndSingleton.Instance.SetLine(4F);
+        SetEndSingleton.Instance.SetLine(10F);
     }
 }
