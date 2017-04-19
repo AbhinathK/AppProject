@@ -43,7 +43,7 @@ public class PlaceStartPlatform : MonoBehaviour
                     this.GetComponent<Renderer>().enabled = false;
 
                 }
-                else if(RunningManager.Instance.p3Start == false && RunningManager.Instance.p1End == true)
+                else if(RunningManager.Instance.p3Start == false && RunningManager.Instance.p1End == true && RunningManager.Instance.pause == false)
                 {
                     RunningManager.Instance.StartP3();
                     this.GetComponent<Renderer>().enabled = false;

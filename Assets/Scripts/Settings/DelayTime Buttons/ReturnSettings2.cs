@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 using HoloToolkit.Unity;
 
-public class ButtonBehaviour : MonoBehaviour
+public class ReturnSettings2 : MonoBehaviour
 {
 
 
@@ -18,10 +18,11 @@ public class ButtonBehaviour : MonoBehaviour
 
     public void OnSelect()
     {
-        if (SetEndSingleton.platformIsSet == true && DelayTimeSingleton.delayIsSet == true && PatientSpawnSingleton.spawnIsSet == true) {
-            GlobalPositionTracker.Instance.UpdatePos(Camera.main.transform.position);
+        if (DelayTimeSingleton.delayIsSet == true)
+        {
             GlobalPositionTracker.Instance.UpdateRotation(Camera.main.transform.rotation);
-            Application.LoadLevel("MorrisWaterMaze");
+            GlobalPositionTracker.Instance.UpdatePos(Camera.main.transform.position);
+            Application.LoadLevel("Settings");
         }
     }
 }

@@ -73,7 +73,6 @@ public class RunningManager : MonoBehaviour {
 
     public void StartNextPhase()
     {
-        p3Start = true;
         pause = false;
     }
     

@@ -42,6 +42,7 @@ public class SetEndSingleton : MonoBehaviour
     {
         platformPos2 = x;
         lineIsSet = true;
+        platformIsSet = true;
 
     }
 
