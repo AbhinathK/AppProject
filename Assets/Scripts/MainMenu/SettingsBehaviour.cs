@@ -18,7 +18,7 @@ public class SettingsBehaviour : MonoBehaviour
 
     void Update()
     {
-        this.GetComponentInChildren<Text>().text = (Camera.main.transform.position).x.ToString();
+    
     }
     public void OnSelect()
     {

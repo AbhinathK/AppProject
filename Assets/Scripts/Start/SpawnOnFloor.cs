@@ -31,14 +31,15 @@ public class SpawnOnFloor : MonoBehaviour
         var headPosition = Camera.main.transform.position;
         RaycastHit onObject;
         if (Physics.Raycast(headPosition, Vector3.down, out onObject)){
-            if ((RunningManager.Instance.p1Start == true && RunningManager.Instance.p1End == false) || (RunningManager.Instance.p3Start == true && RunningManager.Instance.p3End == false))
+            if ((RunningManager.Instance.p1Start == true && RunningManager.Instance.p1End == false))
             {
                 if (onObject.collider.gameObject == this.gameObject)
                 {
                     this.GetComponent<Renderer>().enabled = true;
                     this.GetComponent<Renderer>().material.color = Color.green;
-                    
-                    if(EndingCalled == false){
+
+                    if (EndingCalled == false)
+                    {
                         EndingCalled = true;
                         Invoke("IsStanding", 3F);
                     }
@@ -48,7 +49,27 @@ public class SpawnOnFloor : MonoBehaviour
                     this.GetComponent<Renderer>().enabled = true;
                     this.GetComponent<Renderer>().material.color = Color.blue;
                 }
-            }else if (RunningManager.Instance.pause == true)
+            }
+            else if ((RunningManager.Instance.p1Start == true && RunningManager.Instance.p1End == false))
+            {
+                if (onObject.collider.gameObject == this.gameObject)
+                {
+                    this.GetComponent<Renderer>().enabled = false;
+
+                    if (EndingCalled == false)
+                    {
+                        EndingCalled = true;
+                        Invoke("IsStanding", 3F);
+                    }
+                }
+                else if (planesDone == true)
+                {
+                    this.GetComponent<Renderer>().enabled = false;
+                }
+
+
+            }
+            else if (RunningManager.Instance.pause == true)
             {
                 this.GetComponent<Renderer>().enabled = false;
             }

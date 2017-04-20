@@ -19,7 +19,6 @@ public class SetPatientSpawn : MonoBehaviour {
 
     private void Update()
     {
-        this.GetComponentInChildren<Text>().text = (Camera.main.transform.position).x.ToString();
     }
     void OnSelect()
     {

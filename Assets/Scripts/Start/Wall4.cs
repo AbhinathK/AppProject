@@ -44,7 +44,7 @@ public class Wall4 : MonoBehaviour
         float currentfloor = SurfaceMeshesToPlanes.Instance.FloorYPosition;
         Vector3 startPlatformPos = new Vector3(startPos.x, currentfloor, startPos.z);
         this.transform.localScale = new Vector3(dimension, 2F, 0.1F);
-        this.transform.position = startPlatformPos + new Vector3(0F, 1, dimension / 2);
+        this.transform.position = startPlatformPos + new Vector3(0, 1, dimension / 2);
         
     }
 

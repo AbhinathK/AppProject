@@ -46,7 +46,7 @@ public class RunningManager : MonoBehaviour {
     }
     public void StartP3()
     {
-        p1Start = true;
+        p3Start = true;
     }
     public void EndP1()
     {
@@ -54,7 +54,7 @@ public class RunningManager : MonoBehaviour {
     }
     public void EndP3()
     {
-        p1End = true;
+        p3End = true;
     }
 
 
