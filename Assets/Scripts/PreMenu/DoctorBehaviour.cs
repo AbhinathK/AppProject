@@ -18,6 +18,8 @@ public class DoctorBehaviour : MonoBehaviour
 
     public void OnSelect()
     {
+        GGlobalPositionTracker.Instance.UpdateRotation(Camera.main.transform.rotation);
+        GlobalPositionTracker.Instance.UpdatePos(Camera.main.transform.position);
         Application.LoadLevel("Settings");
     }
 }

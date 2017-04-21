@@ -20,8 +20,13 @@ public class MoveChair : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+        if ((RunningManager.Instance.p1Start == true && RunningManager.Instance.p1End == false))
+        {
+
+            this.GetComponent<Renderer>().enabled = true;
+            
+        }
+    }
 
     void MoveChair1(object Object, EventArgs e)
     {
