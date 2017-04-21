@@ -26,16 +26,14 @@ public class Wall3 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if ((RunningManager.Instance.p1Start == true && RunningManager.Instance.p1End == false) || (RunningManager.Instance.p3Start == true && RunningManager.Instance.p1End == true && RunningManager.Instance.p3End == false))
+        //if ((RunningManager.Instance.p1Start == true && RunningManager.Instance.p1End == false) || (RunningManager.Instance.p3Start == true && RunningManager.Instance.p1End == true && RunningManager.Instance.p3End == false))
+        if ((RunningManager.Instance.p1Start == true && RunningManager.Instance.p1End == false))
         {
 
             this.GetComponent<Renderer>().enabled = true;
             this.GetComponent<Renderer>().material.color = Color.blue;
         }
-        else
-        {
-            this.GetComponent<Renderer>().enabled = false;
-        }
+
     }
 
     void MoveWall3(object Object, EventArgs e)
@@ -43,8 +41,8 @@ public class Wall3 : MonoBehaviour
         float dimension = 5;
         float currentfloor = SurfaceMeshesToPlanes.Instance.FloorYPosition;
         Vector3 startPlatformPos = new Vector3(startPos.x, currentfloor, startPos.z);
-        this.transform.localScale = new Vector3(dimension, 2F, 0.1F);
-        this.transform.position = startPlatformPos + new Vector3(0F, 1, -dimension / 2);
+        this.transform.localScale = new Vector3(dimension, 0.1F, 0.1F);
+        this.transform.position = startPlatformPos + new Vector3(0F, 0.05F, -dimension / 2);
         
     }
 }

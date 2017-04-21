@@ -50,25 +50,6 @@ public class SpawnOnFloor : MonoBehaviour
                     this.GetComponent<Renderer>().material.color = Color.blue;
                 }
             }
-            else if ((RunningManager.Instance.p1Start == true && RunningManager.Instance.p1End == false))
-            {
-                if (onObject.collider.gameObject == this.gameObject)
-                {
-                    this.GetComponent<Renderer>().enabled = false;
-
-                    if (EndingCalled == false)
-                    {
-                        EndingCalled = true;
-                        Invoke("IsStanding", 3F);
-                    }
-                }
-                else if (planesDone == true)
-                {
-                    this.GetComponent<Renderer>().enabled = false;
-                }
-
-
-            }
             else if (RunningManager.Instance.pause == true)
             {
                 this.GetComponent<Renderer>().enabled = false;
@@ -79,8 +60,12 @@ public class SpawnOnFloor : MonoBehaviour
     // Called by GazeGestureManager when the user performs a Select gesture
     void OnSelect()
     {
-        
-        
+        if ((RunningManager.Instance.p3Start == true && RunningManager.Instance.p3End == false))
+        {
+            RunningManager.Instance.EndPhase();
+        }
+
+
     }
 
    

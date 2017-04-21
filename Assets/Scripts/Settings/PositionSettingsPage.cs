@@ -6,9 +6,9 @@ public class PositionSettingsPage : MonoBehaviour {
 
 	// Use this for initialization
 	void Awake () {
-        //Camera.main.transform.gameObject.transform.rotation= (GlobalPositionTracker.globalRotation);
+        Camera.main.transform.gameObject.transform.rotation = Quaternion.Euler(0, GlobalPositionTracker.globalRotation.eulerAngles.y, GlobalPositionTracker.globalRotation.eulerAngles.z);
         this.gameObject.transform.rotation = Quaternion.Euler(0, GlobalPositionTracker.globalRotation.eulerAngles.y, GlobalPositionTracker.globalRotation.eulerAngles.z);
-        //Camera.main.transform.gameObject.transform.position = (GlobalPositionTracker.globalPosOffset);
+        Camera.main.transform.gameObject.transform.position = (GlobalPositionTracker.globalPosOffset);
         this.gameObject.transform.position = (GlobalPositionTracker.globalPosOffset);
 
     }

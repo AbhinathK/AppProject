@@ -3,6 +3,7 @@
 
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -63,6 +64,7 @@ namespace Academy.HoloToolkit.Unity
             {
                 StartObserver();
             }
+            SurfaceMeshesToPlanes.Instance.MakePlanesComplete += RemoveMeshes;
         }
 
         /// <summary>
@@ -298,5 +300,12 @@ namespace Academy.HoloToolkit.Unity
                 }
             }
         }
+
+        public void RemoveMeshes(object Object, EventArgs e)
+        {
+            this.DrawVisualMeshes = false;
+        }
     }
+
+
 }
