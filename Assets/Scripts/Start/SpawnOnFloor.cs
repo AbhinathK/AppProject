@@ -88,7 +88,7 @@ public class SpawnOnFloor : MonoBehaviour
     public Vector3 CalcRealtiveFloorPos()
     {
         Vector3 temp = PatientSpawnSingleton.currentLoc;
-        float x = 2.5F;
+        float x = RoomSizeSingleton.roomSize/2;
         float circle = ((4-SetEndSingleton.platformPos1)/4)*x;
         float line = SetEndSingleton.platformPos2;
         

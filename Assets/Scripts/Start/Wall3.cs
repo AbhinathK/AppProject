@@ -38,7 +38,7 @@ public class Wall3 : MonoBehaviour
 
     void MoveWall3(object Object, EventArgs e)
     {
-        float dimension = 5;
+        float dimension = RoomSizeSingleton.roomSize;
         float currentfloor = SurfaceMeshesToPlanes.Instance.FloorYPosition;
         Vector3 startPlatformPos = new Vector3(startPos.x, currentfloor, startPos.z);
         this.transform.localScale = new Vector3(dimension, 0.1F, 0.1F);
