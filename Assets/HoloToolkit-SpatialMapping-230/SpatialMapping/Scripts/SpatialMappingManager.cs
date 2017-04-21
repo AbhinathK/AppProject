@@ -303,7 +303,7 @@ namespace Academy.HoloToolkit.Unity
 
         public void RemoveMeshes(object Object, EventArgs e)
         {
-            this.DrawVisualMeshes = false;
+            UpdateRendering(false);
         }
     }
 

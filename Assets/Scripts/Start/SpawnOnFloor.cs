@@ -81,7 +81,7 @@ public class SpawnOnFloor : MonoBehaviour
     {
         planesDone = true;
         float currentfloor = SurfaceMeshesToPlanes.Instance.FloorYPosition;
-        Vector3 spawnin =  new Vector3(CalcRealtiveFloorPos().x, currentfloor+0.05F, CalcRealtiveFloorPos().z);
+        Vector3 spawnin =  new Vector3(CalcRealtiveFloorPos().x, currentfloor+0.1F, CalcRealtiveFloorPos().z);
         this.transform.position = spawnin;
     }
 
