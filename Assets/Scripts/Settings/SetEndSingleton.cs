@@ -23,11 +23,11 @@ public class SetEndSingleton : MonoBehaviour
         }
 
         Instance = this;
-        platformIsSet = false;
-        circleIsSet = false;
-        lineIsSet = false;
-        platformPos1 = 0F;
-        platformPos2 = 0F;
+        platformIsSet = true;
+        circleIsSet = true;
+        lineIsSet = true;
+        platformPos1 = 2F;
+        platformPos2 = 2F;
         DontDestroyOnLoad(gameObject);
     }
 

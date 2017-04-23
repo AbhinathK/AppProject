@@ -27,7 +27,7 @@ public class WorldCursor : MonoBehaviour
             // Display the cursor mesh.
             meshRenderer.enabled = true;
 
-            // Move thecursor to the point where the raycast hit.
+            // Move the cursor to the point where the raycast hit.
             this.transform.position = hitInfo.point;
 
             // Rotate the cursor to hug the surface of the hologram.

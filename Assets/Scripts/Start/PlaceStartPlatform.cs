@@ -66,7 +66,7 @@ public class PlaceStartPlatform : MonoBehaviour
     public void StartPlatformSpawn(object Object, EventArgs e)
     {
         float currentfloor = SurfaceMeshesToPlanes.Instance.FloorYPosition;
-        this.transform.position = new Vector3(startPos.x, currentfloor+0.05F, startPos.z);
+        this.transform.position = new Vector3(startPos.x, currentfloor+0.1F, startPos.z);
         this.GetComponent<Renderer>().enabled = true;
         this.GetComponent<Renderer>().material.color = Color.yellow;
     }

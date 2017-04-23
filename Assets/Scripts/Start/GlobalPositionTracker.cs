@@ -19,7 +19,7 @@ public class GlobalPositionTracker : MonoBehaviour {
 
         Instance = this;
         globalPosOffset = new Vector3(0, 0, 0);
-        globalRotation = new Quaternion();
+        globalRotation = Quaternion.identity;
         DontDestroyOnLoad(gameObject);
     }
 	

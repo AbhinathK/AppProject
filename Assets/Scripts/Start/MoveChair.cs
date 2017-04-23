@@ -34,7 +34,7 @@ public class MoveChair : MonoBehaviour {
         float currentfloor = SurfaceMeshesToPlanes.Instance.FloorYPosition;
         var number = UnityEngine.Random.Range((-dimension/2), (dimension / 2));
         Vector3 startPlatformPos = new Vector3(startPos.x, currentfloor, startPos.z);
-        this.transform.position = startPlatformPos + new Vector3(0, 0.05F, (dimension/2)+2);
+        this.transform.position = startPlatformPos + new Vector3(number, 0.05F, (dimension/2)+2);
         this.GetComponent<Renderer>().enabled = true;
     }
 }

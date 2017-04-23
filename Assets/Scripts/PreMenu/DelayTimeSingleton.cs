@@ -19,7 +19,8 @@ public class DelayTimeSingleton : MonoBehaviour
         }
 
         Instance = this;
-        delayIsSet = false;
+        delayIsSet = true;
+        delayTime = 5;
 
         DontDestroyOnLoad(gameObject);
     }

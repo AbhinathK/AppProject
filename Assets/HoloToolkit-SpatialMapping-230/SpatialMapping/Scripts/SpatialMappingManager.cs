@@ -64,7 +64,7 @@ namespace Academy.HoloToolkit.Unity
             {
                 StartObserver();
             }
-            SurfaceMeshesToPlanes.Instance.MakePlanesComplete += RemoveMeshes;
+            
         }
 
         /// <summary>
@@ -301,10 +301,6 @@ namespace Academy.HoloToolkit.Unity
             }
         }
 
-        public void RemoveMeshes(object Object, EventArgs e)
-        {
-            UpdateRendering(false);
-        }
     }
 
 
