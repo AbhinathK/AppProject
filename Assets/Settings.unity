@@ -287,7 +287,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -261, y: 41}
-  m_SizeDelta: {x: 195, y: 56}
+  m_SizeDelta: {x: 183, y: 56}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &27868365
 MonoBehaviour:
@@ -344,7 +344,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 195, y: 56, z: 10}
+  m_Size: {x: 183, y: 56, z: 10}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &27868369
 MonoBehaviour:
@@ -470,7 +470,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -20, y: -84}
-  m_SizeDelta: {x: 195, y: 56}
+  m_SizeDelta: {x: 183, y: 56}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &96676737
 MonoBehaviour:
@@ -527,7 +527,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 195, y: 56, z: 10}
+  m_Size: {x: 183, y: 56, z: 10}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &96676741
 MonoBehaviour:
@@ -872,7 +872,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -20, y: 41}
-  m_SizeDelta: {x: 195, y: 56}
+  m_SizeDelta: {x: 183, y: 56}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &483234703
 MonoBehaviour:
@@ -929,7 +929,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 195, y: 56, z: 10}
+  m_Size: {x: 183, y: 56, z: 10}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &483234707
 MonoBehaviour:
@@ -1202,6 +1202,18 @@ Prefab:
     - target: {fileID: 4000012413246738, guid: dcfff29e15ef0304dbfabcb30a37ad97, type: 2}
       propertyPath: m_RootOrder
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012413246738, guid: dcfff29e15ef0304dbfabcb30a37ad97, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 800
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012413246738, guid: dcfff29e15ef0304dbfabcb30a37ad97, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 800
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012413246738, guid: dcfff29e15ef0304dbfabcb30a37ad97, type: 2}
+      propertyPath: m_LocalScale.z
+      value: 1000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dcfff29e15ef0304dbfabcb30a37ad97, type: 2}
@@ -1481,7 +1493,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 237, y: 39}
-  m_SizeDelta: {x: 195, y: 56}
+  m_SizeDelta: {x: 183, y: 56}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1056570963
 MonoBehaviour:
@@ -1538,7 +1550,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 195, y: 56, z: 10}
+  m_Size: {x: 183, y: 56, z: 10}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1056570967
 MonoBehaviour:
@@ -1664,7 +1676,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -304, y: -166}
-  m_SizeDelta: {x: 150, y: 40}
+  m_SizeDelta: {x: 183, y: 56}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1084290734
 MonoBehaviour:
@@ -1710,7 +1722,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 150, y: 40, z: 10}
+  m_Size: {x: 183, y: 56, z: 10}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1084290738
 MonoBehaviour:
@@ -2247,7 +2259,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 242, y: -84}
-  m_SizeDelta: {x: 195, y: 56}
+  m_SizeDelta: {x: 183, y: 56}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1747868427
 MonoBehaviour:
@@ -2293,7 +2305,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 195, y: 56, z: 10}
+  m_Size: {x: 183, y: 56, z: 10}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1747868430
 MonoBehaviour:
