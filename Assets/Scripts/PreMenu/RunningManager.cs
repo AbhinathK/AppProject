@@ -67,6 +67,7 @@ public class RunningManager : MonoBehaviour {
             Invoke("StartNextPhase",DelayTimeSingleton.delayTime);
         } else if (RunningManager.Instance.p3Start == true && RunningManager.Instance.p3End == false)
         {
+            p3End = true;
             EndTrial();
         }
     }

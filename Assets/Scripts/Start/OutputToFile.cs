@@ -28,31 +28,77 @@ public class OutputToFile : MonoBehaviour {
     private static DateTime timeStart = System.DateTime.Now;
     private static DateTime timeEnd = System.DateTime.Now;
     private static bool firstSave = true;
+    public static OutputToFile Instance { get; private set; }
+    public static Boolean InitialiseFileStart = false;
+    public static Boolean InitialiseTrialStart = false;
+    public static Boolean P1Complete = false;
+    public static Boolean P3Started = false;
+    private static Boolean TrialsStarted1 = false;
+
     //private static string timeStart = System.DateTime.Now.ToString("h:mm:ss tt");
     // Use this for initialization
     void Start () {
+
+
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+        }
+        DontDestroyOnLoad(gameObject);
+
         
 
-        Invoke("InitialiseFile",0F);
-        
 
-        
 
 
     }
+    void Update()
+    {
+        if (InitialiseFileStart == true)
+        {
+            Invoke("InitialiseFile", 0F);
+            InitialiseFileStart = false;
+        }
+        
+        if (InitialiseTrialStart == true)
+        {
+            Invoke("StartTrial", 0F);
+            InitialiseTrialStart = false;
+        }
+
+        if (TrialsStarted1 == true)
+        {
+            InvokeRepeating("WriteData1", 1.0f, 1.0f);
+            TrialsStarted1 = false;
+        }
+        if (P1Complete == true)
+        {
+            Invoke("CompleteP1", 0F);
+            P1Complete = false;
+        }
+        if (P3Started == true)
+        {
+            InvokeRepeating("WriteData2", 1.0f, 1.0f);
+            P3Started = false;
+        }
+    }
+
 	
-	// Update is called once per frame
-	void Update () {
-       
+    public void StartWrite()
+    {
+        Invoke("InitialiseFile", 0F);
     }
-#if WINDOWS_UWP
+
 #if WINDOWS_UWP
     async void InitialiseFile(){
         Trials = TrialNumSingleton.trialsNum;
         StorageFile sampleFile = await localFolder.CreateFileAsync(fileName, CreationCollisionOption.ReplaceExisting);
         await FileIO.AppendTextAsync(sampleFile, "Patient Name/ID" + "\r\n");
-        await FileIO.AppendTextAsync(sampleFile, "Number of Trails" + "\r\n");
-        await FileIO.AppendTextAsync(sampleFile, "Delay Length" + "\r\n");
+        await FileIO.AppendTextAsync(sampleFile, "Number of Trails " + TrialNumSingleton.trialsNum.ToString() + "\r\n");
+        await FileIO.AppendTextAsync(sampleFile, "Delay Length " + DelayTimeSingleton.delayTime.ToString() + "\r\n");
+        await FileIO.AppendTextAsync(sampleFile, "Room Size " + RoomSizeSingleton.roomSize.ToString() + "\r\n");
+        InitialiseTrialStart = true;
+        
         }
 #endif
 #if WINDOWS_UWP
@@ -116,9 +162,11 @@ public class OutputToFile : MonoBehaviour {
     async void StartTrial(){
         float Endpoint = SetEndSingleton.platformPos1 + SetEndSingleton.platformPos2/10;
         StorageFile sampleFile = await localFolder.CreateFileAsync(fileName, CreationCollisionOption.OpenIfExists);
+        await FileIO.AppendTextAsync(sampleFile, "Trail " + Endpoint.ToString() + "\r\n");
         await FileIO.AppendTextAsync(sampleFile, "Endpoint " + Endpoint.ToString() + "\r\n");
-        await FileIO.AppendTextAsync(sampleFile, "Path Taken"+ "\r\n");
-        InvokeRepeating("WriteData1", 1.0f, 1.0f);
+        await FileIO.AppendTextAsync(sampleFile, "Path Taken P1"+ "\r\n");
+        TrialsStarted1 = true;
+        
     }
 #endif
 #if WINDOWS_UWP
@@ -128,11 +176,12 @@ public class OutputToFile : MonoBehaviour {
         StorageFile sampleFile = await localFolder.CreateFileAsync(fileName, CreationCollisionOption.OpenIfExists);
         await FileIO.AppendTextAsync(sampleFile, "Start Time " + timeStart.ToString("h:mm:ss tt") + "\r\n");
         await FileIO.AppendTextAsync(sampleFile, "End Time " + timeEnd.ToString("h:mm:ss tt") + "\r\n");
-        await FileIO.AppendTextAsync(sampleFile, "TimeElapsed " + totalTime.TotalSeconds.ToString() + "\r\n");
+        await FileIO.AppendTextAsync(sampleFile, "Time Elapsed " + totalTime.TotalSeconds.ToString() + "\r\n");
         await FileIO.AppendTextAsync(sampleFile, "Distance Travelled " + distance.ToString() + "\r\n");
+        await FileIO.AppendTextAsync(sampleFile, "Path Taken P3" + "\r\n");
         timeStarted = false;
         distance = 0;
-        InvokeRepeating("WriteData2", 1.0f, 1.0f);
+        P3Started = true;
     }
 #endif
 #if WINDOWS_UWP
@@ -142,20 +191,24 @@ public class OutputToFile : MonoBehaviour {
         StorageFile sampleFile = await localFolder.CreateFileAsync(fileName, CreationCollisionOption.OpenIfExists);
         await FileIO.AppendTextAsync(sampleFile, "Start Time " + timeStart.ToString("h:mm:ss tt") + "\r\n");
         await FileIO.AppendTextAsync(sampleFile, "End Time " + timeEnd.ToString("h:mm:ss tt") + "\r\n");
-        await FileIO.AppendTextAsync(sampleFile, "TimeElapsed " + totalTime.TotalSeconds.ToString() + "\r\n");
+        await FileIO.AppendTextAsync(sampleFile, "Time Elapsed " + totalTime.TotalSeconds.ToString() + "\r\n");
         await FileIO.AppendTextAsync(sampleFile, "Distance Travelled " + distance.ToString() + "\r\n");
         timeStarted = false;
-        InvokeRepeating("WriteData2", 1.0f, 1.0f);
-        Invoke("checkTrials",2F);
+        Invoke("CheckTrials",1F);
     }
 #endif
-    /*void UpdatePos()
+#if WINDOWS_UWP
+    async void CheckTrials()
     {
-        
-        var headPosition = Camera.main.transform.position;
-        var sr = File.AppendText("c:\\KBTest.txt");
-        sr.WriteLine("X = {0}, Y = {1}, Z = {2}", headPosition.x, headPosition.y, headPosition.z);
+        if(TrialsStarted == true){
+            Trials = Trials-1;
     }
-    */
+    if(Trials == 0){
+            TrialsStarted = false;
+    }else{
+    InvokeRepeating("WriteData1", 1.0f, 1.0f);
+    }
+    }
 #endif
+
 }

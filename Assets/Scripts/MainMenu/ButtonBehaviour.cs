@@ -21,7 +21,9 @@ public class ButtonBehaviour : MonoBehaviour
         if (SetEndSingleton.platformIsSet == true && DelayTimeSingleton.delayIsSet == true && PatientSpawnSingleton.spawnIsSet == true) {
             GlobalPositionTracker.Instance.UpdatePos(Camera.main.transform.position);
             GlobalPositionTracker.Instance.UpdateRotation(Camera.main.transform.rotation);
+            OutputToFile.InitialiseFileStart = true;
             Application.LoadLevel("MorrisWaterMaze");
+            
         }
     }
 }
