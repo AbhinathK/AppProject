@@ -103,7 +103,7 @@ public class PlaceStartPlatform : MonoBehaviour
             variableName.material.color = Color.yellow;
             
         }
-              
+        GetComponent<AudioSource>().Play();
         SpatialMappingManager.Instance.DrawVisualMeshes = false;
     }
 }

@@ -21,7 +21,7 @@ public class OutputToFile : MonoBehaviour {
     private static string fileName = timeStamp + ".txt";
     private static Boolean TrialsStarted = false;
     private static float Trials = 1;
-    private static float distance = 0;
+    private static double distance;
     private static float lastX = 0;
     private static float lastZ = 0;
     private static Boolean timeStarted = false;
@@ -29,14 +29,16 @@ public class OutputToFile : MonoBehaviour {
     private static DateTime timeEnd = System.DateTime.Now;
     public static int currentTrial { get; private set; }
     public static OutputToFile Instance { get; private set; }
-    public static Boolean InitialiseFileStart = false;
-    public static Boolean InitialiseTrialStart = false;
-    public static Boolean P1Complete = false;
-    public static Boolean P3Started = false;
-    private static Boolean TrialsStarted1 = false;
+    public static Boolean InitialiseFileStart { get; set; }
+    public static Boolean InitialiseTrialStart { get; private set; }
+    public static Boolean P1Complete { get; private set; }
+    public static Boolean P3Started { get; private set; }
+    public static Boolean P3Complete { get; set; }
+    public static Boolean TrialCheck { get; private set; }
+    public static Boolean TrialsStarted1 { get; private set; }
 
     //private static string timeStart = System.DateTime.Now.ToString("h:mm:ss tt");
-    
+
     void Start () {
 
 
@@ -46,8 +48,15 @@ public class OutputToFile : MonoBehaviour {
         }
         DontDestroyOnLoad(gameObject);
         currentTrial = 1;
-        
 
+
+       InitialiseFileStart = false;
+       InitialiseTrialStart = false;
+       P1Complete = false;
+       P3Started = false;
+       P3Complete = false;
+       TrialCheck = false;
+       TrialsStarted1 = false;
 
 
 
@@ -81,6 +90,17 @@ public class OutputToFile : MonoBehaviour {
             InvokeRepeating("WriteData2", 1.0f, 1.0f);
             P3Started = false;
         }
+        if (P3Complete == true)
+        {
+            Invoke("CompleteP3", 0F);
+            P3Complete = false;
+        }
+        if(TrialCheck == true)
+        {
+            Invoke("CheckTrials", 1F);
+            TrialCheck = false;
+        }
+        
     }
 
 	
@@ -97,6 +117,7 @@ public class OutputToFile : MonoBehaviour {
         await FileIO.AppendTextAsync(sampleFile, "Number of Trails " + TrialNumSingleton.trialsNum.ToString() + "\r\n");
         await FileIO.AppendTextAsync(sampleFile, "Delay Length " + DelayTimeSingleton.delayTime.ToString() + "\r\n");
         await FileIO.AppendTextAsync(sampleFile, "Room Size " + RoomSizeSingleton.roomSize.ToString() + "\r\n");
+        distance = 0;
         InitialiseTrialStart = true;
         
         }
@@ -109,20 +130,23 @@ public class OutputToFile : MonoBehaviour {
             {
                 timeStart = System.DateTime.Now;
                 timeStarted = true;
+                lastX = headPosition.x - startPos.x;
+                lastZ = headPosition.z - startPos.z;
             }
             Vector3 startPos = PatientSpawnSingleton.currentLoc;
             var headPosition = Camera.main.transform.position;
-            lastX = headPosition.x - startPos.x;
-            lastZ = headPosition.z - startPos.z;
+            
             var positionRec = "X = " + (headPosition.x - startPos.x).ToString() + " Z = " + (headPosition.z - startPos.z).ToString();
-            distance += (float)Math.Sqrt(Math.Pow((headPosition.x - startPos.x - lastX),2F) + Math.Pow((headPosition.z - startPos.z - lastZ), 2F));
+            distance = distance + (Math.Sqrt(Math.Pow(((headPosition.x - startPos.x) - lastX),2F) + Math.Pow(((headPosition.z - startPos.z) - lastZ), 2F)));
             StorageFile sampleFile = await localFolder.CreateFileAsync(fileName, CreationCollisionOption.OpenIfExists);
             await FileIO.AppendTextAsync(sampleFile, positionRec + "\r\n");
+            lastX = headPosition.x - startPos.x;
+            lastZ = headPosition.z - startPos.z;
           }else if(RunningManager.Instance.p1End == true){
 
             CancelInvoke();
             timeEnd = System.DateTime.Now;
-            Invoke("CompleteP1",0F);
+            P1Complete = true;
 
 
     }
@@ -137,21 +161,25 @@ public class OutputToFile : MonoBehaviour {
             {
                 timeStart = System.DateTime.Now;
                 timeStarted = true;
+                lastX = headPosition.x - startPos.x;
+                lastZ = headPosition.z - startPos.z;
             }
             Vector3 startPos = PatientSpawnSingleton.currentLoc;
             var headPosition = Camera.main.transform.position;
-            lastX = headPosition.x - startPos.x;
-            lastZ = headPosition.z - startPos.z;
+            
             var positionRec = "X = " + (headPosition.x - startPos.x).ToString() + " Z = " + (headPosition.z - startPos.z).ToString();
-            distance += (float)Math.Sqrt(Math.Pow((headPosition.x - startPos.x - lastX),2F) + Math.Pow((headPosition.z - startPos.z - lastZ), 2F));
+            distance += Math.Sqrt(Math.Pow((headPosition.x - startPos.x - lastX),2F) + Math.Pow((headPosition.z - startPos.z - lastZ), 2F));
             StorageFile sampleFile = await localFolder.CreateFileAsync(fileName, CreationCollisionOption.OpenIfExists);
             await FileIO.AppendTextAsync(sampleFile, positionRec + "\r\n");
+            lastX = headPosition.x - startPos.x;
+            lastZ = headPosition.z - startPos.z;
         }else if (RunningManager.Instance.p3End == true)
         {
 
             CancelInvoke();
-            timeEnd = System.DateTime.Now;
-            Invoke("CompleteP3", 0F);
+            
+            
+            currentTrial = 5;
 
 
         }
@@ -172,6 +200,7 @@ public class OutputToFile : MonoBehaviour {
 #if WINDOWS_UWP
     async void CompleteP1()
     {
+
         TimeSpan totalTime = timeEnd - timeStart;
         StorageFile sampleFile = await localFolder.CreateFileAsync(fileName, CreationCollisionOption.OpenIfExists);
         await FileIO.AppendTextAsync(sampleFile, "Start Time " + timeStart.ToString("h:mm:ss tt") + "\r\n");
@@ -187,6 +216,7 @@ public class OutputToFile : MonoBehaviour {
 #if WINDOWS_UWP
     async void CompleteP3()
     {
+        timeEnd = System.DateTime.Now;
         TimeSpan totalTime = timeEnd - timeStart;
         StorageFile sampleFile = await localFolder.CreateFileAsync(fileName, CreationCollisionOption.OpenIfExists);
         await FileIO.AppendTextAsync(sampleFile, "Start Time " + timeStart.ToString("h:mm:ss tt") + "\r\n");
@@ -194,7 +224,8 @@ public class OutputToFile : MonoBehaviour {
         await FileIO.AppendTextAsync(sampleFile, "Time Elapsed " + totalTime.TotalSeconds.ToString() + "\r\n");
         await FileIO.AppendTextAsync(sampleFile, "Distance Travelled " + distance.ToString() + "\r\n");
         timeStarted = false;
-        Invoke("CheckTrials",1F);
+        TrialCheck = true;
+        
     }
 #endif
 #if WINDOWS_UWP
@@ -207,7 +238,7 @@ public class OutputToFile : MonoBehaviour {
             TrialNumSingleton.trialsIsLocked = false;
             currentTrial = 1 ;
     }else{
-    InvokeRepeating("WriteData1", 1.0f, 1.0f);
+    TrialsStarted1 = true;
     }
     }
 #endif

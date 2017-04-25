@@ -69,6 +69,7 @@ public class RunningManager : MonoBehaviour {
         } else if (RunningManager.Instance.p3Start == true && RunningManager.Instance.p3End == false)
         {
             p3End = true;
+            OutputToFile.P3Complete = true;
             EndTrial();
         }
     }

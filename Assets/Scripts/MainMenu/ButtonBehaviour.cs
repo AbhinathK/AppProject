@@ -21,8 +21,13 @@ public class ButtonBehaviour : MonoBehaviour
         if (PatientSpawnSingleton.spawnIsSet == true) {
             GlobalPositionTracker.Instance.UpdatePos(Camera.main.transform.position);
             GlobalPositionTracker.Instance.UpdateRotation(Camera.main.transform.rotation);
-            TrialNumSingleton.trialsIsLocked = true;
-            OutputToFile.InitialiseFileStart = true;
+            if (TrialNumSingleton.trialsIsLocked == false)
+            {
+                OutputToFile.InitialiseFileStart = true;
+                TrialNumSingleton.trialsIsLocked = true;
+            }
+            
+            
             Application.LoadLevel("MorrisWaterMaze");
             
         }

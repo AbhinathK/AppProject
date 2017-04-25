@@ -18,11 +18,10 @@ public class ReturnSettings2 : MonoBehaviour
 
     public void OnSelect()
     {
-        if (DelayTimeSingleton.delayIsSet == true)
-        {
+        
             GlobalPositionTracker.Instance.UpdateRotation(Camera.main.transform.rotation);
             GlobalPositionTracker.Instance.UpdatePos(Camera.main.transform.position);
             Application.LoadLevel("Settings");
-        }
+        
     }
 }
