@@ -19,6 +19,13 @@ public class DelayTime : MonoBehaviour
         GetComponent<Button>().OnPointerExit(null);
     }
 
+    public void Update()
+    {
+
+        this.GetComponentInChildren<Text>().text = "Set delay time \n\n " + DelayTimeSingleton.delayTime.ToString() + "s";
+
+    }
+
     public void OnSelect()
     {
         GlobalPositionTracker.Instance.UpdateRotation(Camera.main.transform.rotation);

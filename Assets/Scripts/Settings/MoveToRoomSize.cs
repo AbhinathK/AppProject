@@ -16,6 +16,13 @@ public class MoveToRoomSize : MonoBehaviour
         GetComponent<Button>().OnPointerExit(null);
     }
 
+    public void Update()
+    {
+
+        this.GetComponentInChildren<Text>().text = "Set arena size \n\n " + RoomSizeSingleton.roomSize.ToString() + "x" + RoomSizeSingleton.roomSize.ToString() + "m";
+
+    }
+
     public void OnSelect()
     {
         GlobalPositionTracker.Instance.UpdateRotation(Camera.main.transform.rotation);

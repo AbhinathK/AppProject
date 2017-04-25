@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class SetPatientSpawn : MonoBehaviour {
 
 
+
     public void OnGazeEnter()
     {
         GetComponent<Button>().OnPointerEnter(null);
@@ -19,9 +20,14 @@ public class SetPatientSpawn : MonoBehaviour {
 
     private void Update()
     {
+        if (PatientSpawnSingleton.spawnIsSet == true)
+        {
+            this.GetComponentInChildren<Text>().text = "Set patient spawn \n\n Set";
+        }
     }
     void OnSelect()
     {
+
         PatientSpawnSingleton.Instance.SetLoc(Camera.main.transform.position);
         
     }

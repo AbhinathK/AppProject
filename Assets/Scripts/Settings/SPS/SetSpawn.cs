@@ -16,6 +16,13 @@ public class SetSpawn : MonoBehaviour
         GetComponent<Button>().OnPointerExit(null);
     }
 
+    public void Update()
+    {
+        float Endpoint = SetEndSingleton.platformPos1 + SetEndSingleton.platformPos2 / 10;
+        this.GetComponentInChildren<Text>().text = "Set platform spawn \n\n " + Endpoint.ToString();
+
+    }
+
     public void OnSelect()
     {
         GlobalPositionTracker.Instance.UpdateRotation(Camera.main.transform.rotation);

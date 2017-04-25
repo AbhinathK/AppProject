@@ -16,6 +16,13 @@ public class SetNoOfTrials : MonoBehaviour
         GetComponent<Button>().OnPointerExit(null);
     }
 
+    public void Update()
+    {
+
+        this.GetComponentInChildren<Text>().text = "No. of Trials \n\n " + TrialNumSingleton.trialsNum.ToString() + " trials";
+
+    }
+
     public void OnSelect()
     {
         GlobalPositionTracker.Instance.UpdateRotation(Camera.main.transform.rotation);
