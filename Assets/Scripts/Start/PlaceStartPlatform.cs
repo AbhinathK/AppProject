@@ -24,6 +24,10 @@ public class PlaceStartPlatform : MonoBehaviour
         soundPlayed = false;
         startPos = PatientSpawnSingleton.currentLoc;
         this.GetComponent<Renderer>().enabled = false;
+        foreach (Renderer variableName in GetComponentsInChildren<Renderer>())
+        {
+            variableName.enabled = false;
+        }
         SurfaceMeshesToPlanes.Instance.MakePlanesComplete += StartPlatformSpawn;
         
     }
@@ -43,6 +47,11 @@ public class PlaceStartPlatform : MonoBehaviour
                 {
                     RunningManager.Instance.StartP1();
                     this.GetComponent<Renderer>().enabled = false;
+                    foreach (Renderer variableName in GetComponentsInChildren<Renderer>())
+                    {
+                        variableName.enabled = false;
+                    }
+
                     GetComponent<AudioSource>().Play();
 
                 }
@@ -62,9 +71,18 @@ public class PlaceStartPlatform : MonoBehaviour
         if(RunningManager.Instance.pause == true)
         {
             this.GetComponent<Renderer>().enabled = false;
-        }else if(RunningManager.Instance.pause == false && RunningManager.Instance.p3Start == false && RunningManager.Instance.p1End == true)
+            foreach (Renderer variableName in GetComponentsInChildren<Renderer>())
+            {
+                variableName.enabled = false;
+            }
+        }
+        else if(RunningManager.Instance.pause == false && RunningManager.Instance.p3Start == false && RunningManager.Instance.p1End == true)
         {
             this.GetComponent<Renderer>().enabled = false;
+            foreach (Renderer variableName in GetComponentsInChildren<Renderer>())
+            {
+                variableName.enabled = false;
+            }
             if (soundPlayed == false)
             {
                 soundPlayed = true;
@@ -78,6 +96,17 @@ public class PlaceStartPlatform : MonoBehaviour
         this.transform.position = new Vector3(startPos.x, currentfloor+0.1F, startPos.z);
         this.GetComponent<Renderer>().enabled = true;
         this.GetComponent<Renderer>().material.color = Color.yellow;
+        foreach (Renderer variableName in GetComponentsInChildren<Renderer>())
+        {
+            variableName.enabled = false;
+            variableName.material.color = Color.yellow;
+            
+        }
+        
+        foreach (Transform variableName in transform)
+        {
+            variableName.transform.position = new Vector3(startPos.x, currentfloor + 1F, startPos.z);
+        }
         SpatialMappingManager.Instance.DrawVisualMeshes = false;
     }
 }
