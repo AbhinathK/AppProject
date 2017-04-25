@@ -28,9 +28,12 @@ public class SetNoOfTrials1 : MonoBehaviour
 
     public void OnSelect()
     {
-        GlobalPositionTracker.Instance.UpdateRotation(Camera.main.transform.rotation);
-        GlobalPositionTracker.Instance.UpdatePos(Camera.main.transform.position);
-        Application.LoadLevel("SetNoTrials");
+        if (TrialNumSingleton.trialsIsLocked == false)
+        {
+            GlobalPositionTracker.Instance.UpdateRotation(Camera.main.transform.rotation);
+            GlobalPositionTracker.Instance.UpdatePos(Camera.main.transform.position);
+            Application.LoadLevel("SetNoTrials");
+        }
     }
 
 

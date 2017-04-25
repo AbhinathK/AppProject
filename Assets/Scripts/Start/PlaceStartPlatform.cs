@@ -96,17 +96,14 @@ public class PlaceStartPlatform : MonoBehaviour
         this.transform.position = new Vector3(startPos.x, currentfloor+0.1F, startPos.z);
         this.GetComponent<Renderer>().enabled = true;
         this.GetComponent<Renderer>().material.color = Color.yellow;
+        
         foreach (Renderer variableName in GetComponentsInChildren<Renderer>())
         {
-            variableName.enabled = false;
+            variableName.enabled = true;
             variableName.material.color = Color.yellow;
             
         }
-        
-        foreach (Transform variableName in transform)
-        {
-            variableName.transform.position = new Vector3(startPos.x, currentfloor + 1F, startPos.z);
-        }
+              
         SpatialMappingManager.Instance.DrawVisualMeshes = false;
     }
 }

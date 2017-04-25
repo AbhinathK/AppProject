@@ -1,16 +1,23 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class RoomSize11 : MonoBehaviour {
+public class RoomSize11 : MonoBehaviour
+{
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public void OnGazeEnter()
+    {
+        GetComponent<Button>().OnPointerEnter(null);
+    }
+
+    public void OnGazeLeave()
+    {
+        GetComponent<Button>().OnPointerExit(null);
+    }
+
+    public void OnSelect()
+    {
+        RoomSizeSingleton.Instance.SetRoomSize(11F);
+    }
 }

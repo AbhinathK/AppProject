@@ -82,6 +82,11 @@ public class RunningManager : MonoBehaviour {
     {
         GlobalPositionTracker.Instance.UpdateRotation(Camera.main.transform.rotation);
         GlobalPositionTracker.Instance.UpdatePos(Camera.main.transform.position);
+        p1Start = false;
+        p1End = false;
+        p3Start = false;
+        p3End = false;
+        pause = false;
         Application.LoadLevel("MainMenu");
     }
 

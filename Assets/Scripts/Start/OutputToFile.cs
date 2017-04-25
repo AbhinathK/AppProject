@@ -27,7 +27,7 @@ public class OutputToFile : MonoBehaviour {
     private static Boolean timeStarted = false;
     private static DateTime timeStart = System.DateTime.Now;
     private static DateTime timeEnd = System.DateTime.Now;
-    private static bool firstSave = true;
+    public static int currentTrial { get; private set; }
     public static OutputToFile Instance { get; private set; }
     public static Boolean InitialiseFileStart = false;
     public static Boolean InitialiseTrialStart = false;
@@ -36,7 +36,7 @@ public class OutputToFile : MonoBehaviour {
     private static Boolean TrialsStarted1 = false;
 
     //private static string timeStart = System.DateTime.Now.ToString("h:mm:ss tt");
-    // Use this for initialization
+    
     void Start () {
 
 
@@ -45,7 +45,7 @@ public class OutputToFile : MonoBehaviour {
             Destroy(gameObject);
         }
         DontDestroyOnLoad(gameObject);
-
+        currentTrial = 1;
         
 
 
@@ -162,7 +162,7 @@ public class OutputToFile : MonoBehaviour {
     async void StartTrial(){
         float Endpoint = SetEndSingleton.platformPos1 + SetEndSingleton.platformPos2/10;
         StorageFile sampleFile = await localFolder.CreateFileAsync(fileName, CreationCollisionOption.OpenIfExists);
-        await FileIO.AppendTextAsync(sampleFile, "Trail " + Endpoint.ToString() + "\r\n");
+        await FileIO.AppendTextAsync(sampleFile, "Trail " + currentTrial.ToString() + "\r\n");
         await FileIO.AppendTextAsync(sampleFile, "Endpoint " + Endpoint.ToString() + "\r\n");
         await FileIO.AppendTextAsync(sampleFile, "Path Taken P1"+ "\r\n");
         TrialsStarted1 = true;
@@ -200,11 +200,12 @@ public class OutputToFile : MonoBehaviour {
 #if WINDOWS_UWP
     async void CheckTrials()
     {
-        if(TrialsStarted == true){
-            Trials = Trials-1;
+        if(TrialNumSingleton.trialsIsLocked == true){
+            currentTrial += 1;
     }
-    if(Trials == 0){
-            TrialsStarted = false;
+    if(currentTrial > TrialNumSingleton.trialsNum){
+            TrialNumSingleton.trialsIsLocked = false;
+            currentTrial = 1 ;
     }else{
     InvokeRepeating("WriteData1", 1.0f, 1.0f);
     }

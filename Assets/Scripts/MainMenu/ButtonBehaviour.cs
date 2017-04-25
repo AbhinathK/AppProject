@@ -18,9 +18,10 @@ public class ButtonBehaviour : MonoBehaviour
 
     public void OnSelect()
     {
-        if (SetEndSingleton.platformIsSet == true && DelayTimeSingleton.delayIsSet == true && PatientSpawnSingleton.spawnIsSet == true) {
+        if (PatientSpawnSingleton.spawnIsSet == true) {
             GlobalPositionTracker.Instance.UpdatePos(Camera.main.transform.position);
             GlobalPositionTracker.Instance.UpdateRotation(Camera.main.transform.rotation);
+            TrialNumSingleton.trialsIsLocked = true;
             OutputToFile.InitialiseFileStart = true;
             Application.LoadLevel("MorrisWaterMaze");
             
