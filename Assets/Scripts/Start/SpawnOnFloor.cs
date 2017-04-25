@@ -105,6 +105,9 @@ public class SpawnOnFloor : MonoBehaviour
             if (onObject.collider.gameObject == this.gameObject)
             {
                 RunningManager.Instance.EndPhase();
+                if (RunningManager.Instance.p1Start == true && RunningManager.Instance.p1End == false) {
+                    GetComponent<AudioSource>().Play();
+                }
             }
         }
         EndingCalled = false;

@@ -34,6 +34,14 @@ public class Floor : MonoBehaviour
         if ((RunningManager.Instance.p3Start == true && RunningManager.Instance.p3End == false))
         {
             RunningManager.Instance.EndPhase();
+            GetComponent<AudioSource>().Play();
+
+        }
+        else if (RunningManager.Instance.p3Start == false && RunningManager.Instance.p1End == true && RunningManager.Instance.pause == false)
+        {
+            RunningManager.Instance.StartP3();
+            GetComponent<AudioSource>().Play();
+
         }
     }
     void MoveFloor(object Object, EventArgs e)

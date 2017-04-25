@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Academy.HoloToolkit.Unity;
+using UnityEngine.Audio;
 #if !UNITY_EDITOR && UNITY_METRO
 using System.Threading;
 using System.Threading.Tasks;
@@ -41,13 +42,15 @@ public class PlaceStartPlatform : MonoBehaviour
                 {
                     RunningManager.Instance.StartP1();
                     this.GetComponent<Renderer>().enabled = false;
+                    GetComponent<AudioSource>().Play();
 
                 }
+                /*
                 else if(RunningManager.Instance.p3Start == false && RunningManager.Instance.p1End == true && RunningManager.Instance.pause == false)
                 {
                     RunningManager.Instance.StartP3();
                     this.GetComponent<Renderer>().enabled = false;
-                }
+                }*/
             }
             else
             {
@@ -60,7 +63,8 @@ public class PlaceStartPlatform : MonoBehaviour
             this.GetComponent<Renderer>().enabled = false;
         }else if(RunningManager.Instance.pause == false && RunningManager.Instance.p3Start == false && RunningManager.Instance.p1End == true)
         {
-            this.GetComponent<Renderer>().enabled = true;
+            this.GetComponent<Renderer>().enabled = false;
+            GetComponent<AudioSource>().Play();
         }
     }
     public void StartPlatformSpawn(object Object, EventArgs e)
