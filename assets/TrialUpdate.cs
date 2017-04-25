@@ -13,6 +13,6 @@ public class TrialUpdate : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        this.GetComponentInChildren<Text>().text = "Trial: " + TrialNumSingleton.trialsNum.ToString();
+        this.GetComponentInChildren<Text>().text = "Trial: " + OutputToFile.currentTrial.ToString();
     }
 }
