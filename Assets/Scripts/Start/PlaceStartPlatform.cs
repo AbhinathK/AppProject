@@ -15,12 +15,13 @@ public class PlaceStartPlatform : MonoBehaviour
 
     public Vector3 startPos { get; private set; }
     public Boolean atStart { get; private set; }
+    public Boolean soundPlayed { get; private set;}
 
     //public static PlaceStartPlatform Instance { get; private set;} 
 	// Use this for initialization
 	void Start () {
 
-        
+        soundPlayed = false;
         startPos = PatientSpawnSingleton.currentLoc;
         this.GetComponent<Renderer>().enabled = false;
         SurfaceMeshesToPlanes.Instance.MakePlanesComplete += StartPlatformSpawn;
@@ -64,7 +65,11 @@ public class PlaceStartPlatform : MonoBehaviour
         }else if(RunningManager.Instance.pause == false && RunningManager.Instance.p3Start == false && RunningManager.Instance.p1End == true)
         {
             this.GetComponent<Renderer>().enabled = false;
-            GetComponent<AudioSource>().Play();
+            if (soundPlayed == false)
+            {
+                soundPlayed = true;
+                GetComponent<AudioSource>().Play();
+            }
         }
     }
     public void StartPlatformSpawn(object Object, EventArgs e)
